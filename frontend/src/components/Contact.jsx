@@ -20,7 +20,7 @@ export default function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID"; // replace with your Formspree ID
+  const FORMSPREE_URL = "https://formspree.io/f/mrpzgkya"; // replace with your Formspree ID
 
   const handleSubmit = async (e) => {
     e.preventDefault();
