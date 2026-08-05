@@ -61,7 +61,7 @@ export default function Contact() {
             <div className="bg-gradient-to-br from-blue-700 to-cyan-600 rounded-2xl p-8 text-white">
               <h3 className="text-xl font-bold mb-6">Reach Us Directly</h3>
               {[
-                { icon: Mail, label: "Email", value: "hello@dataflowsolutions.com" },
+                { icon: Mail, label: "Email", value: "hello@coresynergy.in" },
                 { icon: Phone, label: "Phone", value: "+91 98765 43210" },
                 { icon: MapPin, label: "Location", value: "India (Remote & On-site)" },
               ].map(({ icon: Icon, label, value }) => (

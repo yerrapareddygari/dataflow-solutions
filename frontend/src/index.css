@@ -5,21 +5,14 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply font-sans text-gray-800 bg-white;
-  }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans text-gray-800 bg-white antialiased; }
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent;
-  }
   .glass {
     backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(219, 234, 254, 0.6);
   }
 }
