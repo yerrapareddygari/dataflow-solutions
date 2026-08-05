@@ -31,8 +31,8 @@ export default function Hero() {
               Trusted Data & Financial Services Partner
             </div>
 
-            <div className="mb-4">
-              <Logo size="lg" />
+            <div className="mb-6">
+              <Logo size="lg" showTagline />
             </div>
 
             <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">

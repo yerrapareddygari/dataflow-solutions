@@ -1,83 +1,88 @@
-export default function Logo({ size = "md", dark = false }) {
+export default function Logo({ size = "md", dark = false, showTagline = false }) {
   const sizes = {
-    sm: { icon: 28, font: "text-base", gap: "gap-2" },
-    md: { icon: 36, font: "text-xl", gap: "gap-2.5" },
-    lg: { icon: 48, font: "text-3xl", gap: "gap-3" },
+    sm: { box: 36, font: "text-lg", tag: "text-[9px]", gap: "gap-2.5" },
+    md: { box: 44, font: "text-xl", tag: "text-[10px]", gap: "gap-3" },
+    lg: { box: 56, font: "text-3xl", tag: "text-xs", gap: "gap-3.5" },
   };
   const s = sizes[size];
 
   return (
     <div className={`inline-flex items-center ${s.gap}`}>
-      {/* Icon mark */}
+      {/* CS Monogram Icon */}
       <svg
-        width={s.icon}
-        height={s.icon}
-        viewBox="0 0 48 48"
+        width={s.box}
+        height={s.box}
+        viewBox="0 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Outer ring */}
-        <circle cx="24" cy="24" r="22" stroke="url(#grad1)" strokeWidth="2.5" fill="white" fillOpacity="0.05" />
-
-        {/* Inner rotating hexagon core */}
-        <path
-          d="M24 8 L36 15.5 L36 30.5 L24 38 L12 30.5 L12 15.5 Z"
-          fill="url(#grad2)"
-          opacity="0.15"
-        />
-
-        {/* Three synergy arcs */}
-        <path
-          d="M24 14 C30 14 35 18.5 35 24"
-          stroke="url(#grad1)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path
-          d="M35 24 C35 29.5 30 34 24 34"
-          stroke="#06b6d4"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.7"
-        />
-        <path
-          d="M24 34 C18 34 13 29.5 13 24 C13 18.5 18 14 24 14"
-          stroke="#93c5fd"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.5"
-        />
-
-        {/* Center dot */}
-        <circle cx="24" cy="24" r="4" fill="url(#grad1)" />
-
-        {/* Connector dots */}
-        <circle cx="24" cy="14" r="2.5" fill="#2563eb" />
-        <circle cx="35" cy="24" r="2.5" fill="#06b6d4" />
-        <circle cx="24" cy="34" r="2.5" fill="#93c5fd" />
-
         <defs>
-          <linearGradient id="grad1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#2563eb" />
+          <linearGradient id="csGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#1d4ed8" />
             <stop offset="100%" stopColor="#06b6d4" />
           </linearGradient>
-          <linearGradient id="grad2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="100%" stopColor="#06b6d4" />
+          <linearGradient id="csGradLight" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#22d3ee" />
           </linearGradient>
         </defs>
+
+        {/* Background rounded square */}
+        <rect width="56" height="56" rx="14" fill="url(#csGrad)" />
+
+        {/* Subtle inner glow */}
+        <rect width="56" height="56" rx="14" fill="white" fillOpacity="0.06" />
+
+        {/* Top-left corner accent */}
+        <rect x="0" y="0" width="14" height="3" rx="1.5" fill="white" fillOpacity="0.3" />
+        <rect x="0" y="0" width="3" height="14" rx="1.5" fill="white" fillOpacity="0.3" />
+
+        {/* Bottom-right corner accent */}
+        <rect x="42" y="53" width="14" height="3" rx="1.5" fill="white" fillOpacity="0.3" />
+        <rect x="53" y="42" width="3" height="14" rx="1.5" fill="white" fillOpacity="0.3" />
+
+        {/* Letter C */}
+        <path
+          d="M26 18 C20 18 15 22.5 15 28 C15 33.5 20 38 26 38 C29 38 31.5 36.8 33.2 35"
+          stroke="white"
+          strokeWidth="3.2"
+          strokeLinecap="round"
+          fill="none"
+        />
+
+        {/* Letter S */}
+        <path
+          d="M36 20 C33.5 18.5 30.5 18.5 29 20 C27.5 21.5 28 23.5 30 25 C32 26.5 34.5 27.5 34.5 30 C34.5 32.5 32.5 34 30 34 C28 34 26.5 33 25.5 31.5"
+          stroke="#93c5fd"
+          strokeWidth="3.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+
+        {/* Small dot accent */}
+        <circle cx="43" cy="13" r="2.5" fill="#22d3ee" opacity="0.8" />
       </svg>
 
-      {/* Wordmark */}
-      <span className={`font-extrabold ${s.font} tracking-tight ${dark ? "text-white" : "text-gray-900"}`}>
-        Core
-        <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-          Synergy
+      {/* Wordmark + tagline */}
+      <div className="flex flex-col leading-none">
+        <span className={`font-extrabold ${s.font} tracking-tight leading-none ${dark ? "text-white" : "text-gray-900"}`}>
+          Core
+          <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            Synergy
+          </span>
         </span>
-      </span>
+        {showTagline && (
+          <span className={`${s.tag} tracking-widest uppercase font-medium mt-1 ${dark ? "text-blue-300" : "text-blue-400"}`}>
+            Precision in Every Process
+          </span>
+        )}
+        {!showTagline && (
+          <span className={`text-[9px] tracking-widest uppercase font-medium mt-0.5 ${dark ? "text-blue-300" : "text-blue-400"}`}>
+            Business Solutions
+          </span>
+        )}
+      </div>
     </div>
   );
 }
